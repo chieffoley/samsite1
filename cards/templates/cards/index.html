@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'cards/style.css' %}" />
+
+{% if latest_card_list %}
+	<ul>
+	{% for card in latest_card_list %}
+		<li>{{ card}}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No cards are available.</p>
+{% endif %}
