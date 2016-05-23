@@ -78,17 +78,19 @@ WSGI_APPLICATION = 'samsite.wsgi.application'
 
 #DATABASES = {}
 #DATABASES['default'] = dj_database_url.config()
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'samsite',
-        'USER': 'samfoley',
-        'PASSWORD': 'legomaniac',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'samsite',
+#        'USER': 'samfoley',
+#        'PASSWORD': 'legomaniac',
+#        'HOST': 'localhost',
+#        'PORT': '',
+#    }
+#}
     
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config()
 
 
 # Password validation
