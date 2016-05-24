@@ -2,8 +2,13 @@ from __future__ import unicode_literals
 import datetime
 from django.utils import timezone
 from django.db import models
+import os
+
 
 # Create your models here.
+
+def get_image_path(instance, filename):
+    return os.path.join('card_photos', str(instance.id), filename)
 
 class Card(models.Model):
     card_name = models.CharField(max_length=200)
@@ -17,6 +22,7 @@ class Card(models.Model):
     patch = models.BooleanField(default=False)
     double_auto = models.BooleanField(default=False)
     double_patch = models.BooleanField(default=False)
+    image = models.ImageField(upload_to = get_image_path, blank=True, null=True)
     
     
     def __str__(self):
