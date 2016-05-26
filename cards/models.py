@@ -11,7 +11,8 @@ class CardPack(models.Model):
     vendor = models.CharField(max_length=100)
     pack_name = models.CharField(max_length=150)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    acquired_date = models.DateTimeField('date acquired', auto_now_add=True)
+    comments = models.CharField(max_length=2000, blank=True)
+    acquired_date = models.DateTimeField('date acquired', default=timezone.now)
     def __str__(self):
         return self.pack_name
     
@@ -26,14 +27,14 @@ class Card(models.Model):
     year = models.IntegerField(default=2015)
     condition = models.FloatField(default = 10.0)
     value = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    comments = models.CharField(max_length=5000, default='')
+    comments = models.CharField(max_length=2000, blank=True)
     rookie_card = models.BooleanField(default=False)
     auto = models.BooleanField(default=False)
     patch = models.BooleanField(default=False)
     double_auto = models.BooleanField(default=False)
     double_patch = models.BooleanField(default=False)
-    image = models.ImageField(upload_to = get_image_path, blank=True, null=True)
-    acquired_date = models.DateTimeField('date acquired')
+    image = models.ImageField(upload_to = 'card-photos', blank=True, null=True)
+    acquired_date = models.DateTimeField('date acquired', default=timezone.now)
     card_pack = models.ForeignKey(CardPack, null=True)
     
     

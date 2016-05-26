@@ -139,3 +139,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
+
+if os.environ.get('ENV_VAR') == 'production':
+    from aws_settings import *
+    
+    
