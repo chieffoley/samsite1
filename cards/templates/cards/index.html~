@@ -15,7 +15,5 @@
 {% endblock %}
 
 {% block content %}
-<h2>Most Valuable Cards</h2>
-
 	
 {% endblock %}
