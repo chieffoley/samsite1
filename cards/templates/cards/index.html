@@ -1,12 +1,17 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'cards/style.css' %}" />
+{% extends 'cards/base.html' %}
+{% block content %}
 
-{% if latest_card_list %}
-	<ul>
-	{% for card in latest_card_list %}
-		<li>{{ card}}</a></li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No cards are available.</p>
-{% endif %}
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'cards/style.css' %}" />
+	
+	{% if latest_card_list %}
+		<ul>
+		{% for card in latest_card_list %}
+			<li>{{ card}}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No cards are available.</p>
+	{% endif %}
+
+{% endblock %}

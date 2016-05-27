@@ -3,6 +3,14 @@ from django.utils import timezone
 
 from .models import Card
 
+class BaseView(generic.ListView):
+    template_name = 'cards/base.html'
+    context_object_name = 'latest_card_list'
+    def get_queryset(self):
+        '''return the last five acquired cards.'''
+        return Card.objects.filter(acquired_date__lte=timezone.now()).order_by('-acquired_date')[:5]
+
+
 class IndexView(generic.ListView):
     template_name = 'cards/index.html'
     context_object_name = 'latest_card_list'

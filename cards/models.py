@@ -10,9 +10,10 @@ import os
 class CardPack(models.Model):
     vendor = models.CharField(max_length=100)
     pack_name = models.CharField(max_length=150)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2, blank=True)
     comments = models.CharField(max_length=2000, blank=True)
     acquired_date = models.DateTimeField('date acquired', default=timezone.now)
+    
     def __str__(self):
         return self.pack_name
     
