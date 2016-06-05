@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import datetime
 from django.utils import timezone
 from django.db import models
+from django.core.urlresolvers import reverse
 import os
 
 
@@ -45,6 +46,9 @@ class Card(models.Model):
     def was_acquired_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+    
+    def get_absolute_url(self):
+        return reverse('cards', kwargs={'pk': self.pk})
 
     was_acquired_recently.admin_order_field = 'acquired_date'
     was_acquired_recently.boolean = True

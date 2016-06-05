@@ -1,0 +1,10 @@
+{% extends 'cards/base_form.html' %}
+
+{% block small_block_1 %}
+	<h1> new card </h1>
+	<form action="/cards/create/" method="POST" class="post-form">
+		{% csrf_token %}
+			{{ form.as_p }}
+		<button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}

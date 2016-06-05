@@ -1,5 +1,8 @@
 from django.views import generic
 from django.utils import timezone
+from django.shortcuts import render
+
+from .forms import CardForm
 
 from .models import Card
 
@@ -25,4 +28,22 @@ class DetailView(generic.DetailView):
     
     def get_queryset(self):
         return Card.objects.filter(acquired_date__lte=timezone.now())
+
+class CreateCardView(generic.FormView):
+    template_name = 'cards/post_edit_card.html'
+    form_class = CardForm
+    success_url = '/cards/'
+    
+    def form_valid(self, form):
+        form.save()
+        return super(CreateCardView, self).form_valid(form)
+    
+    
+    '''
+    template_name = 'cards/post_edit_card.html'
+    form_class = CardForm
+    def form_valid(self, form):
+        return super(CreateCardView, self).form_valid(form)
+    '''
+
 
