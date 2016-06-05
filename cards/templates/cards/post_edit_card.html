@@ -2,9 +2,9 @@
 
 {% block small_block_1 %}
 	<h1> new card </h1>
+	{% load crispy_forms_tags %}
 	<form action="/cards/create/" method="POST" class="post-form">
-		{% csrf_token %}
-			{{ form.as_p }}
-		<button type="submit" class="save btn btn-default">Save</button>
-    </form>
+	{% crispy form %}
+	<button type="submit" class="save btn btn-default">Save</button>
+	</form>
 {% endblock %}
