@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -143,4 +144,4 @@ MEDIA_URL = '/media/'
 if os.environ.get('ENV_VAR') == 'production':
     from aws_settings import *
     
-    
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
