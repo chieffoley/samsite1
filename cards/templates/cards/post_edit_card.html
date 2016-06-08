@@ -1,10 +1,14 @@
 {% extends 'cards/base_form.html' %}
 
 {% block small_block_1 %}
+<div class="row">
+  <div class="col-sm-6 col-md-4">
 	<h1> new card </h1>
 	{% load crispy_forms_tags %}
 	<form action="/cards/create/" method="POST" class="post-form">
 	{% crispy form %}
 	<button type="submit" class="save btn btn-default">Save</button>
 	</form>
+  </div>
+</div>
 {% endblock %}
