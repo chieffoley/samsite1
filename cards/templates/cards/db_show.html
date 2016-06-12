@@ -1,0 +1,34 @@
+{% extends 'cards/page_framework.html' %}
+{% load django_tables2 %}
+{% block 'page_content' %}
+	{% render_table table %}
+	{% if False %}
+		<table class="table">
+		<thead>
+			<tr>
+				<th>Player</th>
+				<th>Team</th>
+				<th>Year</th>
+				<th>Cond</th>
+				<th>Value</th>
+				<th>Card Name</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for card in card_list %}
+		    <tr>
+		    <td>{{ card.player_name }}</td>
+		    <td>{{ card.team }}</td>
+		    <td>{{ card.year }}</td>
+		    <td>{{ card.condition }}</td>
+		    <td>{{ card.value }}</td>
+		    <td>{{ card.card_name }}</td>
+		    </tr>
+		{% endfor %}
+		</tbody>
+		</table>	
+	{% else %}
+		<p>No cards are available.</p>
+	{% endif %}  
+{% endblock %}
+

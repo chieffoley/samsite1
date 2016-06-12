@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.db import models
 from django.core.urlresolvers import reverse
 import os
+import django_tables2 as tables
 
 
 # Create your models here.
@@ -23,6 +24,7 @@ def get_image_path(instance, filename):
     return os.path.join('card_photos', str(instance.id), filename)
 
 class Card(models.Model):
+    
     card_name = models.CharField(max_length=200)
     player_name = models.CharField(max_length=200)
     team = models.CharField(max_length=100)
@@ -54,3 +56,11 @@ class Card(models.Model):
     was_acquired_recently.boolean = True
     was_acquired_recently.short_description = 'acquired recently?'
     
+
+class CardTable(tables.Table):
+    
+    class Meta:
+        model = Card
+        names = tables.Column(order_by=('player_name', 'team','year','condition', 'value','card_name'))
+        fields = ('player_name', 'team','year','condition', 'value','card_name')
+        attrs = {"class": "table"}
