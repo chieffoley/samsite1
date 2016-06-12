@@ -61,6 +61,6 @@ class CardTable(tables.Table):
     
     class Meta:
         model = Card
-        names = tables.Column(order_by=('player_name', 'team','year','condition', 'value','card_name'))
-        fields = ('player_name', 'team','year','condition', 'value','card_name')
+        names = tables.Column(order_by=('player_name', 'team','year','condition', 'value','card_name', 'card_pack'))
+        fields = ('player_name', 'team','year','condition', 'value','card_name','card_pack')
         attrs = {"class": "table"}
