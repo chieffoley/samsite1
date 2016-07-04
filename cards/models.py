@@ -42,6 +42,28 @@ class Card(models.Model):
     acquired_date = models.DateTimeField('date acquired', default=timezone.now)
     card_pack = models.ForeignKey(CardPack, null=True)
     
+    def getRookieStr(self):
+        if self.rookie_card :
+            return "Rookie Card"
+        else :
+            return ""
+    
+    def getString(self):
+        st = ""
+        if self.rookie_card :
+            st += "rc/"
+        if self.auto :
+            st+= "a/"
+        if self.double_patch :
+            st+= "dp/"
+        elif self.patch :
+            st+= "p/"
+        if st[-1] == "/" :
+            st = st[:-1]
+            
+        out = ""
+        out += self.player_name + " " + st
+        return out
     
     def __str__(self):
         return self.card_name

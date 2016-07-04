@@ -2,9 +2,20 @@
 {% load staticfiles %}
 
 {% block 'page_content' %}
-<h1>{{ card }}</h1>
-player name is {{ card.player_name }}
-card acquired on {{ card.acquired_date }}
+<h1>{{ card.player_name }}</h1>
+{% if card.rookie_card %}
+<h3> Rookie Card </h3>
+{% endif %}
+{% if card.auto %}
+<h3> Autograph </h3>
+{% endif %}
+{% if card.double_patch %}
+<h3> Double Patch </h3>
+{% elif card.patch %}
+<h3> Patch </h3>
+{% endif %}
+<p>{{ card.year }} {{ card.team }}</p>
+<p>card acquired on {{ card.acquired_date }}</p>
 team is {{ card.team }}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
