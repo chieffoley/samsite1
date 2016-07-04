@@ -17,7 +17,7 @@
 		<tbody>
 		{% for card in card_list %}
 		    <tr>
-		    <td>{{ card.player_name }}</td>
+		    <td><a href="{% url 'detail' card.id %}">{{ card.player_name }}</a></td>
 		    <td>{{ card.team }}</td>
 		    <td>{{ card.year }}</td>
 		    <td>{{ card.condition }}</td>

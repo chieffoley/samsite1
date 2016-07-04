@@ -55,6 +55,32 @@ class CreateCardView(generic.FormView):
         form.save()
         return super(CreateCardView, self).form_valid(form)
     
+class UpdateCardView(generic.UpdateView):
+    model = Card
+    #form_class = UpdateCardForm
+    fields =    ['card_pack',
+                 'player_name',
+                 'team',
+                 'year',
+                 'condition',
+                 'value',
+                 'rookie_card',
+                 'auto',
+                 'patch',
+                 'double_auto',
+                 'double_patch',
+                 'image',
+                 'comments',
+                 'card_name',
+                 'acquired_date',
+                ]
+    template_name_suffix = '_update_form'
+    success_url = '/cards/'
+    
+    def form_valid(self, form):
+        form.save()
+        return super(UpdateCardView, self).form_valid(form)
+    
 class DeleteCardView(DeleteView):
     model = Card
     success_url = '/cards/'

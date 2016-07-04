@@ -1,9 +1,11 @@
+{% extends 'cards/page_framework.html' %}
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'cards/bootstrap/css/bootstrap.min.css' %}" />
 
+{% block 'page_content' %}
 <h1>{{ card }}</h1>
 player name is {{ card.player_name }}
 card acquired on {{ card.acquired_date }}
 team is {{ card.team }}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% endblock %}

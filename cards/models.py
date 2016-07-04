@@ -5,6 +5,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 import os
 import django_tables2 as tables
+from django_tables2.utils import A
 
 
 # Create your models here.
@@ -58,9 +59,10 @@ class Card(models.Model):
     
 
 class CardTable(tables.Table):
-    
+    player_name = tables.LinkColumn('detail', args=[A('pk')])
+        
     class Meta:
         model = Card
-        names = tables.Column(order_by=('player_name', 'team','year','condition', 'value','card_name', 'card_pack'))
+        names = tables.Column(order_by=('player_name', 'team','year','-condition', '-value','card_name', 'card_pack'))
         fields = ('player_name', 'team','year','condition', 'value','card_name','card_pack')
         attrs = {"class": "table"}
